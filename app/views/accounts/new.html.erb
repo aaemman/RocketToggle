@@ -1,0 +1,38 @@
+<div class="col-md-10 col-md-offset-1 panel panel-default">
+	<div class="panel-body col-lg-offset-1 col-lg-10 ">
+		<h2>Create an Account</h2>
+	</br>
+	<%= form_for @account do |f| %>
+		<% @account.errors.full_messages.each do |msg| %>
+      		<p><%= msg %></p>
+    	<% end %>
+
+	<div class="form-group">
+		<%= f.fields_for :owner do |o| %>
+
+		<div class="form-group">
+			<%= o.text_field :name, placeholder: "Name", class: "form-control"%>
+		</div>
+		<div class="form-group">
+			<%= o.email_field :email, placeholder: "Email", class: "form-control"%>
+		</div>
+		<div class="form-group">
+			<%= o.password_field :password, placeholder: "Password", class: "form-control inputPassword"%>
+		</div>
+		<div class="form-group">
+			<%= o.password_field :password_confirmation, placeholder: "Password Confirmation", class: "form-control inputPassword"%>
+		</div>
+
+		<% end %>
+
+		<div class="form-group input-group">
+			<%= f.text_field :subdomain, placeholder: "Subdomain", class: "form-control"%>
+			<span class="input-group-addon">.toggleme.com</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.submit class: 'btn btn-primary' %>
+	</div>
+	<%end%>
+</div>
+</div>
